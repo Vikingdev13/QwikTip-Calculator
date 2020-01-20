@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class ViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: - View Did Load
@@ -43,7 +44,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func showAlert(_ sender: Any) {
-        let alertController = UIAlertController(title: "Welcome to the Qwik Tip Calculator", message: "1. Enter your bill subtotal, then push done.\n2. Next, use the slider for tip percent, and if you need to split the bill, press the + button for party size.", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Welcome to the Qwik Tip Calculator", message: "1. Enter your bill subtotal, then push done.\n2. Next, use the slider for tip percent(default is 15%). \n3. Lastly, if you need to split the bill, press the + button to adjust party size.", preferredStyle: .alert)
         
         alertController.addAction(UIAlertAction(title: "Got it!", style: .default))
         
@@ -68,6 +69,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         tipPercentSlider.isEnabled = false
+        
     }
     
    
@@ -99,6 +101,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         subtotalTextField.resignFirstResponder()
         tipPercentSlider.isEnabled = true
         
+        
         if subtotalTextField.text?.count == 0 {
             subtotalTextField.text = "0.00"
             model.subtotalFromTextField = "0"
@@ -123,12 +126,20 @@ class ViewController: UIViewController, UITextFieldDelegate {
         amountPerParty.text = model.amountPerPartyAsCurrency
         tipPerParty.text = model.tipPerPartyAsCurrency
         
-        
-        
-        
     }
     
-    
+    enum MyError: Error {
+        case runtimeError(String)
+    }
+        
+    func someFunction() throws {
+        throw MyError.runtimeError("Error")
+    }
+        do {
+        try someFunction()
+    }   catch MyError.runtimeError(let errorMessage) {
+        print(errorMessage)
+    }
     
     
     

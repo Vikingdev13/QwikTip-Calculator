@@ -10,27 +10,6 @@ import Foundation
 
 class Model {
     
-    // Basic Logic
-    // take input
-    // calculate new values
-    // return as strings for labels
-    
-    // accept subtotal as string
-    // accept tipPercent as Int
-    
-    // convert subtotal to NSDecimal for calculation
-    // convert tipPercent to NSDecimal for calculation
-    
-    // calculate tipAmount
-    // calculate totalAmount
-    // calculate
-    // calculate
-    
-    // convert subtotal to Currency
-    // convert tipAmount to Currency
-    // convert total to Currency
-    
-    
     
     var subtotalFromTextField = "0.00"
     var tipPercentFromSlider = 15
@@ -40,7 +19,7 @@ class Model {
     
     // MARK: - Decimals for Calculation
     var subtotalAsDecimal: NSDecimalNumber {
-        return NSDecimalNumber(string: subtotalFromTextField)
+        return (NSDecimalNumber(string: subtotalFromTextField) ) 
     }
     
     var tipPercent: NSDecimalNumber {
@@ -74,6 +53,7 @@ class Model {
         formatter.maximumFractionDigits = 2
         formatter.roundingMode = .up
         return formatter.string(from: subtotalAsDecimal as NSDecimalNumber)!
+             
     }
     
     var tipAmountAsCurrency: String {
@@ -97,6 +77,6 @@ class Model {
         return formatter.string(from: tipPerParty as NSDecimalNumber)!
     }
     
-    
+        
     
 } // END
