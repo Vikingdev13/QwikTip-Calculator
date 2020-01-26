@@ -128,19 +128,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
     }
     
-    enum MyError: Error {
-        case runtimeError(String)
-    }
-        
-    func someFunction() throws {
-        throw MyError.runtimeError("Error")
-    }
-        do {
-        try someFunction()
-    }   catch MyError.runtimeError(let errorMessage) {
-        print(errorMessage)
-    }
-    
     
     
 } // END
