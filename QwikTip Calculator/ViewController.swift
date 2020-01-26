@@ -44,7 +44,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func showAlert(_ sender: Any) {
-        let alertController = UIAlertController(title: "Welcome to the Qwik Tip Calculator", message: "1. Enter your bill subtotal, then push done.\n2. Next, use the slider for tip percent(default is 15%). \n3. Lastly, if you need to split the bill, press the + button to adjust party size.", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Welcome to the Qwik Tip Calculator",
+                                            message: "1. Enter your bill subtotal, then push done.\n2. Next, use the slider for tip percent(default is 15%). \n3. Lastly, if you need to split the bill, press the + button to adjust party size.", preferredStyle: .alert)
         
         alertController.addAction(UIAlertAction(title: "Got it!", style: .default))
         
