@@ -19,6 +19,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         tipPercentSlider.isEnabled = false
         
         
+        
     }
     
     
@@ -28,19 +29,20 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var tipPercentSlider: UISlider!
     @IBOutlet weak var tipAmountLabel: UILabel!
     @IBOutlet weak var totalAmountLabel: UILabel!
-    @IBOutlet weak var stepperCountLabel: UILabel!
+    @IBOutlet weak var stepperCountLabel: UIStepper!
     @IBOutlet weak var amountPerParty: UILabel!
     @IBOutlet weak var tipPerParty: UILabel!
+    
+    
+    // Mark: - Variables
+    
     
     
     
     // MARK: - Actions
     @IBAction func stepperPressed(_ sender: UIStepper) {
+        stepperCountLabel = Int(sender.value).description
         
-        stepperCountLabel.text = Int(sender.value).description
-        model.stepperCountLabel = Int(sender.value)
-        
-        updateLabels()
     }
     
     @IBAction func showAlert(_ sender: Any) {
@@ -55,21 +57,21 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     
     
-    // MARK: - Properties
-    let model = Model()
+    
+    
 
    
     // MARK: - Interactions
     @IBAction func dragSlider(_ sender: UISlider) {
         tipPercentLabel.text = "Tip (\(Int(sender.value))%):"
         
-        model.tipPercentFromSlider = Int(sender.value)
-        updateLabels()
+               
         
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         tipPercentSlider.isEnabled = false
+        
         
     }
     
@@ -102,32 +104,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
         subtotalTextField.resignFirstResponder()
         tipPercentSlider.isEnabled = true
         
-        
-        if subtotalTextField.text?.count == 0 {
-            subtotalTextField.text = "0.00"
-            model.subtotalFromTextField = "0"
-            updateLabels()
-        } else {
-            model.subtotalFromTextField = subtotalTextField.text!
-            model.tipPercentFromSlider = Int(tipPercentSlider.value)
-            
-            // Update Labels
-            updateLabels()
-            
-        }
-        
-        
-        
     }
-    
-    func updateLabels() {
-        subtotalTextField.text = model.subtototalAsCurrency
-        tipAmountLabel.text = model.tipAmountAsCurrency
-        totalAmountLabel.text = model.totalAmountAsCurrency
-        amountPerParty.text = model.amountPerPartyAsCurrency
-        tipPerParty.text = model.tipPerPartyAsCurrency
         
-    }
     
     
     
